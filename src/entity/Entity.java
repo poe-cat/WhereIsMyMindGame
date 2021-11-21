@@ -2,6 +2,6 @@ package entity;
 
 public class Entity {
 
-    private int x, y;
-    private int speed;
+    public int x, y;
+    public int speed;
 }
