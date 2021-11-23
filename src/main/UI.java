@@ -4,6 +4,7 @@ import object.OBJ_Key;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 public class UI {
 
@@ -14,6 +15,8 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+    double playTime;
+    DecimalFormat decimalFormat = new DecimalFormat("#0.00");
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -46,6 +49,12 @@ public class UI {
             y = gamePanel.screenHeight/2 - (gamePanel.tileSize * 3);
             g2.drawString(text, x, y);
 
+            text = "Your time is: " + decimalFormat.format(playTime) + "!";
+            textLength = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+            x = gamePanel.screenWidth/2 - textLength/2;
+            y = gamePanel.screenHeight/2 + (gamePanel.tileSize * 4);
+            g2.drawString(text, x, y);
+
             g2.setFont(arial_80B);
             g2.setColor(Color.yellow);
             text = "Congratulations!";
@@ -62,6 +71,10 @@ public class UI {
             g2.drawImage(keyImage, gamePanel.tileSize / 2, gamePanel.tileSize / 2,
                     gamePanel.tileSize, gamePanel.tileSize, null);
             g2.drawString("x " + gamePanel.player.hasKey, 74, 65);
+
+            //time
+            playTime += (double) 1/60;
+            g2.drawString("Time:" + decimalFormat.format(playTime), gamePanel.tileSize * 11, 65);
 
             //message
             if (messageOn == true) {
