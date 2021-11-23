@@ -183,5 +183,10 @@ public class Player extends Entity {
                 break;
         }
         g2.drawImage(image, screenX, screenY, gamePanel.tileSize, gamePanel.tileSize, null);
+
+        //uncomment to check where is the solid area
+//        g2.setColor(Color.red);
+//        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+
     }
 }
