@@ -115,24 +115,26 @@ public class Player extends Entity {
             //opening doors [notes]
             switch(objectName) {
                 case "Key":
+                    gamePanel.playSoundEff(1);
                     hasKey++;
                     gamePanel.obj[i] = null;
                     System.out.println("Key:"+hasKey);
                     break;
                 case "Door":
                     if(hasKey > 0) {
+                        gamePanel.playSoundEff(3);
                         gamePanel.obj[i] = null;
                         hasKey--;
                     }
                     System.out.println("Key:"+hasKey);
                     break;
                 case "Boots":
+                    gamePanel.playSoundEff(2);
                     speed += 2;
                     gamePanel.obj[i] = null;
                     break;
             }
         }
-
     }
 
 
