@@ -135,6 +135,11 @@ public class Player extends Entity {
                     gamePanel.obj[i] = null;
                     gamePanel.ui.showMessage("Speed up!");
                     break;
+                case "Chest":
+                    gamePanel.ui.gameFinished = true;
+                    gamePanel.stopMusic();
+                    gamePanel.playSoundEff(4);
+                    break;
             }
         }
     }
