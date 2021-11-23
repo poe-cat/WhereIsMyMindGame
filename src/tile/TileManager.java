@@ -27,18 +27,18 @@ public class TileManager {
 
     public void getTileImage() {
 
-//        //placeholder
-//        setup(0, "grass00", false);
-//        setup(1, "grass00", false);
-//        setup(2, "grass00", false);
-//        setup(3, "grass00", false);
-//        setup(4, "grass00", false);
-//        setup(5, "grass00", false);
-//        setup(6, "grass00", false);
-//        setup(7, "grass00", false);
-//        setup(8, "grass00", false);
-//        setup(9, "grass00", false);
-//        //placeholder
+        //placeholder
+        setup(0, "grass00", false);
+        setup(1, "grass00", false);
+        setup(2, "grass00", false);
+        setup(3, "grass00", false);
+        setup(4, "grass00", false);
+        setup(5, "grass00", false);
+        setup(6, "grass00", false);
+        setup(7, "grass00", false);
+        setup(8, "grass00", false);
+        setup(9, "grass00", false);
+        //placeholder
 
 
         setup(10, "grass00", false);
