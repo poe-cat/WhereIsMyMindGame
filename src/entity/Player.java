@@ -16,6 +16,8 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
 
+    int hasKey = 0;
+
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -81,6 +83,7 @@ public class Player extends Entity {
 
             // check object collision
             int objIndex = gamePanel.cChecker.checkObject(this, true);
+            pickUpObject(objIndex);
 
             // if collision is false, player can move
             if(collisionOn == false) {
@@ -103,6 +106,31 @@ public class Player extends Entity {
             }
         }
     }
+
+    public void pickUpObject(int i) {
+
+        if(i != 999) {
+            String objectName = gamePanel.obj[i].name;
+
+            //opening doors [notes]
+            switch(objectName) {
+                case "Key":
+                    hasKey++;
+                    gamePanel.obj[i] = null;
+                    System.out.println("Key:"+hasKey);
+                    break;
+                case "Door":
+                    if(hasKey > 0) {
+                        gamePanel.obj[i] = null;
+                        hasKey--;
+                    }
+                    System.out.println("Key:"+hasKey);
+                    break;
+            }
+        }
+
+    }
+
 
     public void draw(Graphics2D g2) {
 
