@@ -18,6 +18,8 @@ public class Player extends Entity {
 
     public int hasKey = 0;
 
+    int standCounter = 0;
+
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         this.gamePanel = gamePanel;
@@ -96,6 +98,7 @@ public class Player extends Entity {
             }
 
             spriteCounter++;
+
             if (spriteCounter > 12) {
                 if (spriteNum == 1) {
                     spriteNum = 2;
@@ -103,6 +106,13 @@ public class Player extends Entity {
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
+            }
+        }
+        else {
+            standCounter++;
+            if(standCounter == 20) { //20 frames buffer
+                spriteNum = 1;
+                standCounter = 0;
             }
         }
     }
