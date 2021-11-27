@@ -16,9 +16,7 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
-
-    public int hasKey = 0;
-
+//    public int hasKey = 0;
     int standCounter = 0;
 
 
@@ -132,37 +130,7 @@ public class Player extends Entity {
     public void pickUpObject(int i) {
 
         if(i != 999) {
-            String objectName = gamePanel.obj[i].name;
 
-            //opening doors [notes]
-            switch(objectName) {
-                case "Key":
-                    gamePanel.playSoundEff(1);
-                    hasKey++;
-                    gamePanel.obj[i] = null;
-                    gamePanel.ui.showMessage("You got a key!");
-                    break;
-                case "Door":
-                    if(hasKey > 0) {
-                        gamePanel.playSoundEff(3);
-                        gamePanel.obj[i] = null;
-                        hasKey--;
-                        gamePanel.ui.showMessage("You opened the door!");
-                    }
-                    else gamePanel.ui.showMessage("You need a key!");
-                    break;
-                case "Boots":
-                    gamePanel.playSoundEff(2);
-                    speed += 2;
-                    gamePanel.obj[i] = null;
-                    gamePanel.ui.showMessage("Speed up!");
-                    break;
-                case "Chest":
-                    gamePanel.ui.gameFinished = true;
-                    gamePanel.stopMusic();
-                    gamePanel.playSoundEff(4);
-                    break;
-            }
         }
     }
 
