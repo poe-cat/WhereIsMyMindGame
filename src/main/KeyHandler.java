@@ -5,9 +5,15 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
+    GamePanel gamePanel;
+
     public boolean upPressed, downPressed, leftPressed, rightPressed;
     //debug
     boolean checkDrawTime = false;
+
+    public KeyHandler(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
 
 
     @Override
