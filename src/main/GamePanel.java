@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //system
     TileManager tileManager = new TileManager(this);
-    KeyHandler keyHandler = new KeyHandler();
+    KeyHandler keyHandler = new KeyHandler(this);
     Sound music = new Sound();
     Sound soundEff = new Sound();
     public CollisionChecker cChecker = new CollisionChecker(this);
@@ -57,7 +57,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setUpGame() {
         assetSetter.setObject();
         playMusic(0);
-        stopMusic();
+        stopMusic(); // comment if want music on
         gameState = playState;
     }
 
