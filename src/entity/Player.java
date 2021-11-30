@@ -81,6 +81,10 @@ public class Player extends Entity {
             int objIndex = gamePanel.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
 
+            // check NPC collision
+            int npcIndex = gamePanel.cChecker.checkEntity(this, gamePanel.npc);
+            interactNPC(npcIndex);
+
             // if collision is false, player can move
             if(collisionOn == false) {
                 switch (direction) {
@@ -115,6 +119,12 @@ public class Player extends Entity {
 
         if(i != 999) {
 
+        }
+    }
+
+    public void interactNPC(int i) {
+        if(i != 999) {
+            System.out.println("you are hitting an npc");
         }
     }
 
