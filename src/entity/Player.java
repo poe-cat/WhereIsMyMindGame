@@ -90,7 +90,7 @@ public class Player extends Entity {
 
             // check tile collision
             collisionOn = false;
-//            gamePanel.cChecker.checkTile(this);
+            gamePanel.cChecker.checkTile(this);
 
             // check object collision
             int objIndex = gamePanel.cChecker.checkObject(this, true);
