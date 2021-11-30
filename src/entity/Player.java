@@ -16,7 +16,6 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
-//    public int hasKey = 0;
     int standCounter = 0;
 
 
@@ -91,7 +90,7 @@ public class Player extends Entity {
 
             // check tile collision
             collisionOn = false;
-            gamePanel.cChecker.checkTile(this);
+//            gamePanel.cChecker.checkTile(this);
 
             // check object collision
             int objIndex = gamePanel.cChecker.checkObject(this, true);
@@ -172,7 +171,27 @@ public class Player extends Entity {
                 }
             }
         }
-        g2.drawImage(image, screenX, screenY, null);
+
+        int x = screenX;
+        int y = screenY;
+
+        if(screenX > worldX) {
+            x = worldX;
+        }
+        if(screenY > worldY) {
+            y = worldY;
+        }
+
+        int rightOffset = gamePanel.screenWidth - screenX;
+        if(rightOffset > gamePanel.worldWidth - worldX) {
+            x = gamePanel.screenWidth - (gamePanel.worldWidth - worldX);
+        }
+        int bottomOffset = gamePanel.screenHeight - screenY;
+        if(bottomOffset > gamePanel.worldHeight - worldY) {
+            y = gamePanel.screenHeight - (gamePanel.worldHeight - worldY);
+        }
+
+        g2.drawImage(image, x, y, null);
 
         //uncomment to check where is the solid area
 //        g2.setColor(Color.red);
