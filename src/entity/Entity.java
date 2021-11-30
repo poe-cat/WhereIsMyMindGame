@@ -34,6 +34,8 @@ public class Entity {
 
         collisionOn = false;
         gamePanel.cChecker.checkTile(this);
+        gamePanel.cChecker.checkObject(this, false);
+        gamePanel.cChecker.checkPlayer(this);
 
         // if collision is false, player can move
         if(collisionOn == false) {
