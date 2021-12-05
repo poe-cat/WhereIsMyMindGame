@@ -121,6 +121,7 @@ public class Player extends Entity {
     public void interactNPC(int i) {
         if(i != 999) {
             gamePanel.gameState = gamePanel.dialogueState;
+            gamePanel.npc[i].speak();
         }
     }
 
