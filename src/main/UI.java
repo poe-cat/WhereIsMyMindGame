@@ -58,7 +58,20 @@ public class UI {
     }
 
     public void drawDialogueScreen() {
+        // WINDOW
+        int x = gamePanel.tileSize * 2;
+        int y = gamePanel.tileSize/2;
+        int width = gamePanel.screenWidth - (gamePanel.tileSize * 4);
+        int height = gamePanel.tileSize * 5;
 
+        drawSubWindow(x, y, width, height);
+    }
+
+    public void drawSubWindow(int x, int y, int width, int height) {
+
+        Color c = new Color(0,0,0);
+        g2.setColor(c);
+        g2.fillRoundRect(x, y, width, height, 35, 35);
     }
 
     public int getXforCenteredText(String text) {
