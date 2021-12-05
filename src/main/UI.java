@@ -61,16 +61,20 @@ public class UI {
     public void drawDialogueScreen() {
         // WINDOW
         int x = gamePanel.tileSize * 2;
-        int y = gamePanel.tileSize/2;
+        int y = gamePanel.tileSize / 2;
         int width = gamePanel.screenWidth - (gamePanel.tileSize * 4);
         int height = gamePanel.tileSize * 4;
 
         drawSubWindow(x, y, width, height);
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 28F));
         x += gamePanel.tileSize;
         y += gamePanel.tileSize;
-        g2.drawString(currentDialogue, x, y);
+
+        for (String line : currentDialogue.split("\n")) {
+            g2.drawString(line, x, y);
+            y += 40;
+        }
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {

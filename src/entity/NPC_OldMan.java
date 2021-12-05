@@ -30,9 +30,9 @@ public class NPC_OldMan extends Entity {
 
     public void setDialogue() {
         dialogues[0] = "Hello, lad.";
-        dialogues[1] = "So you've come to this island to find the treasure?";
-        dialogues[2] = "I used to be a great wizard but now... I'm just an alcocholic with no strenght.";
-        dialogues[3] = "Well, good luck on you. By the way... will ya spare a coin?";
+        dialogues[1] = "So you've come to this island \nto find the treasure?";
+        dialogues[2] = "I used to be a great wizard \nbut now... I'm just an alcocholic \nwith no strenght.";
+        dialogues[3] = "Well, good luck on you. \nBy the way... \nwill ya spare a coin?";
     }
 
     @Override
