@@ -15,6 +15,7 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+    public String currentDialogue = "";
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -62,16 +63,21 @@ public class UI {
         int x = gamePanel.tileSize * 2;
         int y = gamePanel.tileSize/2;
         int width = gamePanel.screenWidth - (gamePanel.tileSize * 4);
-        int height = gamePanel.tileSize * 5;
+        int height = gamePanel.tileSize * 4;
 
         drawSubWindow(x, y, width, height);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
 
-        Color c = new Color(0,0,0);
+        Color c = new Color(0,0,0,210);
         g2.setColor(c);
         g2.fillRoundRect(x, y, width, height, 35, 35);
+
+        c = new Color(255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
     }
 
     public int getXforCenteredText(String text) {

@@ -27,6 +27,10 @@ public class NPC_OldMan extends Entity {
         right2 = setup("/npc/oldman_right_2");
     }
 
+    public void setDialogue() {
+        dialogues[0] = "Hello, lad.";
+    }
+
     @Override
     public void setAction() {
         actionLockCounter++;
