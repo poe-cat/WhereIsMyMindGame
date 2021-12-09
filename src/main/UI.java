@@ -15,6 +15,8 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String currentDialogue = "";
+    public int commandNum = 0;
+
 
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -66,19 +68,57 @@ public class UI {
 
     public void drawTitleScreen() {
 
-        g2.setColor(new Color(70,120,80));
+        g2.setColor(new Color(0,0,0));
         g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 
+        // TITLE NAME
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
         String text = "Where is my mind?";
         int x = getXforCenteredText(text);
         int y = gamePanel.tileSize * 3;
 
-        g2.setColor(Color.black);
+        // SHADOW
+        g2.setColor(Color.gray);
         g2.drawString(text, x + 5, y + 5);
 
+        //MAIN COLOR
         g2.setColor(Color.white);
         g2.drawString(text, x, y);
+
+        // HERO IMAGE
+        x = gamePanel.screenWidth/2 - (gamePanel.tileSize * 2)/2;
+        y += gamePanel.tileSize * 2;
+        g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize * 2, gamePanel.tileSize * 2, null);
+
+        // MENU
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
+        text = "NEW GAME";
+        x = getXforCenteredText(text);
+        y += gamePanel.tileSize * 3.5;
+        g2.drawString(text, x, y);
+        if(commandNum == 0) {
+            g2.drawString(">", x-gamePanel.tileSize, y);
+        }
+
+
+        text = "LOAD GAME";
+        x = getXforCenteredText(text);
+        y += gamePanel.tileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 1) {
+            g2.drawString(">", x-gamePanel.tileSize, y);
+        }
+
+
+        text = "QUIT";
+        x = getXforCenteredText(text);
+        y += gamePanel.tileSize;
+        g2.drawString(text, x, y);
+        if(commandNum == 2) {
+            g2.drawString(">", x-gamePanel.tileSize, y);
+        }
+
+
     }
 
     public void drawPauseScreen() {
