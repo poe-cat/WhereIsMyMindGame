@@ -38,9 +38,13 @@ public class UI {
 
     public void draw(Graphics2D g2) {
         this.g2 = g2;
-
         g2.setFont(maruMonica);
         g2.setColor(Color.white);
+
+        // TITLE STATE
+        if(gamePanel.gameState == gamePanel.titleState) {
+            drawTitleScreen();
+        }
 
         // PLAY STATE
         if(gamePanel.gameState == gamePanel.playState) {
@@ -58,6 +62,23 @@ public class UI {
         if(gamePanel.gameState == gamePanel.dialogueState) {
             drawDialogueScreen();
         }
+    }
+
+    public void drawTitleScreen() {
+
+        g2.setColor(new Color(70,120,80));
+        g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+        String text = "Where is my mind?";
+        int x = getXforCenteredText(text);
+        int y = gamePanel.tileSize * 3;
+
+        g2.setColor(Color.black);
+        g2.drawString(text, x + 5, y + 5);
+
+        g2.setColor(Color.white);
+        g2.drawString(text, x, y);
     }
 
     public void drawPauseScreen() {
