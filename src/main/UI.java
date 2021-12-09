@@ -16,6 +16,7 @@ public class UI {
     public boolean gameFinished = false;
     public String currentDialogue = "";
     public int commandNum = 0;
+    public int titleScreenState = 0;
 
 
     public UI(GamePanel gamePanel) {
@@ -68,57 +69,99 @@ public class UI {
 
     public void drawTitleScreen() {
 
-        g2.setColor(new Color(0,0,0));
-        g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
+        if(titleScreenState == 0) {
+            g2.setColor(new Color(0,0,0));
+            g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
 
-        // TITLE NAME
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
-        String text = "Where is my mind?";
-        int x = getXforCenteredText(text);
-        int y = gamePanel.tileSize * 3;
+            // TITLE NAME
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+            String text = "Where is my mind?";
+            int x = getXforCenteredText(text);
+            int y = gamePanel.tileSize * 3;
 
-        // SHADOW
-        g2.setColor(Color.gray);
-        g2.drawString(text, x + 5, y + 5);
+            // SHADOW
+            g2.setColor(Color.gray);
+            g2.drawString(text, x + 5, y + 5);
 
-        //MAIN COLOR
-        g2.setColor(Color.white);
-        g2.drawString(text, x, y);
+            //MAIN COLOR
+            g2.setColor(Color.white);
+            g2.drawString(text, x, y);
 
-        // HERO IMAGE
-        x = gamePanel.screenWidth/2 - (gamePanel.tileSize * 2)/2;
-        y += gamePanel.tileSize * 2;
-        g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize * 2, gamePanel.tileSize * 2, null);
+            // HERO IMAGE
+            x = gamePanel.screenWidth/2 - (gamePanel.tileSize * 2)/2;
+            y += gamePanel.tileSize * 2;
+            g2.drawImage(gamePanel.player.down1, x, y, gamePanel.tileSize * 2, gamePanel.tileSize * 2, null);
 
-        // MENU
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
-        text = "NEW GAME";
-        x = getXforCenteredText(text);
-        y += gamePanel.tileSize * 3.5;
-        g2.drawString(text, x, y);
-        if(commandNum == 0) {
-            g2.drawString(">", x-gamePanel.tileSize, y);
+            // MENU
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
+            text = "NEW GAME";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize * 3.5;
+            g2.drawString(text, x, y);
+            if(commandNum == 0) {
+                g2.drawString(">", x-gamePanel.tileSize, y);
+            }
+
+
+            text = "LOAD GAME";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            if(commandNum == 1) {
+                g2.drawString(">", x-gamePanel.tileSize, y);
+            }
+
+
+            text = "QUIT";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            if(commandNum == 2) {
+                g2.drawString(">", x-gamePanel.tileSize, y);
+            }
         }
+        else if(titleScreenState == 1) {
 
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(42F));
 
-        text = "LOAD GAME";
-        x = getXforCenteredText(text);
-        y += gamePanel.tileSize;
-        g2.drawString(text, x, y);
-        if(commandNum == 1) {
-            g2.drawString(">", x-gamePanel.tileSize, y);
+            String text = "Select your class!";
+            int x = getXforCenteredText(text);
+            int y = gamePanel.tileSize * 3;
+            g2.drawString(text, x, y);
+
+            text = "Fighter";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize * 3;
+            g2.drawString(text, x, y);
+            if(commandNum == 0) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "Thief";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            if(commandNum == 1) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "Sorcerer";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize;
+            g2.drawString(text, x, y);
+            if(commandNum == 2) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
+
+            text = "Back";
+            x = getXforCenteredText(text);
+            y += gamePanel.tileSize * 2;
+            g2.drawString(text, x, y);
+            if(commandNum == 3) {
+                g2.drawString(">", x - gamePanel.tileSize, y);
+            }
         }
-
-
-        text = "QUIT";
-        x = getXforCenteredText(text);
-        y += gamePanel.tileSize;
-        g2.drawString(text, x, y);
-        if(commandNum == 2) {
-            g2.drawString(">", x-gamePanel.tileSize, y);
-        }
-
-
     }
 
     public void drawPauseScreen() {
