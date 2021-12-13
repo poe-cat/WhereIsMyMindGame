@@ -82,15 +82,36 @@ public class UI {
 
     public void drawPlayerLife() {
 
+        gamePanel.player.life = 5;
+
         int x = gamePanel.tileSize/2;
         int y = gamePanel.tileSize/2;
         int i = 0;
 
+        // DRAW MAX LIFE
         while(i < gamePanel.player.maxLife/2) {
             g2.drawImage(heart_blank, x, y, null);
             i++;
             x += gamePanel.tileSize;
         }
+
+        // RESET
+        x = gamePanel.tileSize/2;
+        y = gamePanel.tileSize/2;
+        i = 0;
+
+        // DRAW CURRENT LIFE
+        while(i < gamePanel.player.life) {
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if(i < gamePanel.player.life) {
+                g2.drawImage(heart_full, x, y, null);
+            }
+            i++;
+            x += gamePanel.tileSize;
+        }
+
+
     }
 
     public void drawTitleScreen() {
