@@ -1,6 +1,10 @@
 package main;
 
+import object.OBJ_Heart;
+import object.SuperObject;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,6 +14,7 @@ public class UI {
     GamePanel gamePanel;
     Graphics2D g2;
     Font maruMonica, purisaB;
+    BufferedImage heart_full, heart_half, heart_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -32,6 +37,12 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // CREATE HUD OBJECT
+        SuperObject heart = new OBJ_Heart(gamePanel);
+        heart_full = heart.image;
+        heart_half = heart.image2;
+        heart_blank = heart.image3;
     }
 
     public void showMessage(String text) {
@@ -51,11 +62,12 @@ public class UI {
 
         // PLAY STATE
         if(gamePanel.gameState == gamePanel.playState) {
-            //do playState stuff
+            drawPlayerLife();
         }
 
         // PAUSE STATE
         if(gamePanel.gameState == gamePanel.pauseState) {
+            drawPlayerLife();
             g2.setFont(purisaB);
             g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             drawPauseScreen();
@@ -63,7 +75,21 @@ public class UI {
 
         // DIALOGUE STATE
         if(gamePanel.gameState == gamePanel.dialogueState) {
+            drawPlayerLife();
             drawDialogueScreen();
+        }
+    }
+
+    public void drawPlayerLife() {
+
+        int x = gamePanel.tileSize/2;
+        int y = gamePanel.tileSize/2;
+        int i = 0;
+
+        while(i < gamePanel.player.maxLife/2) {
+            g2.drawImage(heart_blank, x, y, null);
+            i++;
+            x += gamePanel.tileSize;
         }
     }
 
