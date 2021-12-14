@@ -82,7 +82,7 @@ public class UI {
 
     public void drawPlayerLife() {
 
-        gamePanel.player.life = 5;
+        //gamePanel.player.life = 5;
 
         int x = gamePanel.tileSize/2;
         int y = gamePanel.tileSize/2;
