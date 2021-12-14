@@ -24,6 +24,7 @@ public class EventHandler {
 
         if(hit(27, 16, "right") == true) {damagePit(gamePanel.dialogueState);}
         if(hit(23,12,"up") == true) {healingPool(gamePanel.dialogueState);}
+        //if(hit(27,16,"right") == true) {teleport(gamePanel.dialogueState);}
 
     }
 
@@ -48,6 +49,13 @@ public class EventHandler {
         eventRect.y = eventRectDefaultY;
 
         return hit;
+    }
+
+    public void teleport(int gameState) {
+        gamePanel.gameState = gameState;
+        gamePanel.ui.currentDialogue = "Teleport";
+        gamePanel.player.worldX = gamePanel.tileSize * 37;
+        gamePanel.player.worldY = gamePanel.tileSize * 10;
     }
 
     public void damagePit(int gameState) {
