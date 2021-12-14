@@ -89,6 +89,8 @@ public class Player extends Entity {
             // CHECK EVENT
             gamePanel.eHandler.checkEvent();
 
+            gamePanel.keyHandler.enterPressed = false;
+
             // if collision is false, player can move
             if(collisionOn == false) {
                 switch (direction) {
@@ -133,7 +135,6 @@ public class Player extends Entity {
                 gamePanel.npc[i].speak();
             }
         }
-        gamePanel.keyHandler.enterPressed = false;
     }
 
 
