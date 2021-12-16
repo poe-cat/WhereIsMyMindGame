@@ -1,23 +1,25 @@
 package main;
 
-import java.awt.*;
-
 public class EventHandler {
 
     GamePanel gamePanel;
-    Rectangle eventRect;
-    int eventRectDefaultX, eventRectDefaultY;
+    EventRect eventRect[][];
 
     public EventHandler(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
+        eventRect = new EventRect[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
 
-        eventRect = new Rectangle();
-        eventRect.x = 23;
-        eventRect.y = 23;
-        eventRect.width = 2;
-        eventRect.height = 2;
-        eventRectDefaultX = eventRect.x;
-        eventRectDefaultY = eventRect.y;
+        int col = 0;
+        int row = 0;
+        while (col < gamePanel.maxWorldCol && row < gamePanel.maxWorldRow) {
+            eventRect[col][row] = new EventRect();
+            eventRect[col][row].x = 23;
+            eventRect[col][row].y = 23;
+            eventRect[col][row].width = 2;
+            eventRect[col][row].height = 2;
+            eventRect[col][row].eventRectDefaultX = eventRect[col][row].x;
+            eventRect[col][row].eventRectDefaultY = eventRect[col][row].y;
+        }
     }
 
     public void checkEvent() {
