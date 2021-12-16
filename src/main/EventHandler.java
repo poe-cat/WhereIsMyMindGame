@@ -30,16 +30,16 @@ public class EventHandler {
 
     }
 
-    public boolean hit(int eventCol, int eventRow, String reqDirection) {
+    public boolean hit(int col, int row, String reqDirection) {
 
         boolean hit = false;
 
         gamePanel.player.solidArea.x = gamePanel.player.worldX + gamePanel.player.solidArea.x;
         gamePanel.player.solidArea.y = gamePanel.player.worldY + gamePanel.player.solidArea.y;
-        eventRect.x = eventCol * gamePanel.tileSize + eventRect.x;
-        eventRect.y = eventRow * gamePanel.tileSize + eventRect.y;
+        eventRect[col][row].x = col * gamePanel.tileSize + eventRect[col][row].x;
+        eventRect[col][row].y = row * gamePanel.tileSize + eventRect[col][row].y;
 
-        if(gamePanel.player.solidArea.intersects(eventRect)) {
+        if(gamePanel.player.solidArea.intersects(eventRect[col][row])) {
             if(gamePanel.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any"))  {
                 hit = true;
             }
@@ -47,8 +47,8 @@ public class EventHandler {
 
         gamePanel.player.solidArea.x = gamePanel.player.solidAreaDefaultX;
         gamePanel.player.solidArea.y = gamePanel.player.solidAreaDefaultY;
-        eventRect.x = eventRectDefaultX;
-        eventRect.y = eventRectDefaultY;
+        eventRect[col][row].x = eventRect[col][row].eventRectDefaultX;
+        eventRect[col][row].y = eventRect[col][row].eventRectDefaultY;
 
         return hit;
     }
