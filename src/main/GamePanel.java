@@ -125,7 +125,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        //debug
+        // DEBUG
         long drawStart = 0;
         if(keyHandler.checkDrawTime == true) {
             drawStart = System.nanoTime();
@@ -135,33 +135,32 @@ public class GamePanel extends JPanel implements Runnable {
         if(gameState == titleState) {
             ui.draw(g2);
         }
+
         // OTHERS
         else {
-            // tile
+            // TILE
             tileManager.draw(g2);
 
-            // object
-            for (SuperObject superObject : obj) {
-                if (superObject != null) {
-                    superObject.draw(g2, this);
-                }
-            }
+            // ADD ENTITIES TO THE LIST
+            entityList.add(player);
 
-            // NPC
             for(int i = 0; i < npc.length; i++) {
                 if(npc[i] != null) {
-                    npc[i].draw(g2);
+                    entityList.add(npc[i]);
                 }
             }
 
-            // player
-            player.draw(g2);
+            for(int i = 0; i < obj.length; i++) {
+                if(obj[i] != null) {
+                    entityList.add(obj[i]);
+                }
+            }
 
-            //UI
+            // UI
             ui.draw(g2);
         }
 
-        //debug
+        // DEBUG
         if(keyHandler.checkDrawTime == true) {
             long drawEnd = System.nanoTime();
             long passed = drawEnd - drawStart;
