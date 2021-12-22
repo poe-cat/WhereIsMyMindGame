@@ -163,7 +163,7 @@ public class GamePanel extends JPanel implements Runnable {
                 @Override
                 public int compare(Entity e1, Entity e2) {
 
-                    int result = Integer.compare(e1.worldY, e2.worldX);
+                    int result = Integer.compare(e1.worldY, e2.worldY);
                     return result;
                 }
             });
