@@ -2,7 +2,6 @@ package main;
 
 import entity.Entity;
 import entity.Player;
-import object.SuperObject;
 import tile.TileManager;
 
 import javax.swing.*;
@@ -42,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //entity and object
     public Player player = new Player(this, keyHandler);
-    public SuperObject[] obj = new SuperObject[10]; //can display 10 objects at the same time
+    public Entity[] obj = new Entity[10]; //can display 10 objects at the same time
     public Entity npc[] = new Entity[10];
 
     // GAME STATE
