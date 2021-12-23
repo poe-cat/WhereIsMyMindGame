@@ -21,5 +21,20 @@ public class MON_GreenSlime extends Entity {
         solidAreaDefaultY = solidArea.y;
     }
 
+    public void getImage() {
+
+        up1 = setup("/monster/monster1");
+        up2 = setup("/monster/monster2");
+        down1 = setup("/monster/monster1");
+        down2 = setup("/monster/monster2");
+        left1 = setup("/monster/monster1");
+        left2 = setup("/monster/monster2");
+        right1 = setup("/monster/monster1");
+        right2 = setup("/monster/monster2");
+    }
+
+    public void setAction() {
+
+    }
 
 }
