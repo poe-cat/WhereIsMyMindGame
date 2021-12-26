@@ -74,17 +74,22 @@ public class Player extends Entity {
                 direction = "right";
             }
 
-            // check tile collision
+            // CHECK TILE COLLISION
             collisionOn = false;
             gamePanel.cChecker.checkTile(this);
 
-            // check object collision
+            // CHECK OBJECT COLLISION
             int objIndex = gamePanel.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
 
-            // check NPC collision
+            // CHECK NPC COLLISION
             int npcIndex = gamePanel.cChecker.checkEntity(this, gamePanel.npc);
             interactNPC(npcIndex);
+
+            // CHECK MONSTER COLLISION
+            int monsterIndex = gamePanel.cChecker.checkEntity(this, gamePanel.monster);
+
+
 
             // CHECK EVENT
             gamePanel.eHandler.checkEvent();
