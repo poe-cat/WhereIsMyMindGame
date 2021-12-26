@@ -88,8 +88,7 @@ public class Player extends Entity {
 
             // CHECK MONSTER COLLISION
             int monsterIndex = gamePanel.cChecker.checkEntity(this, gamePanel.monster);
-
-
+            contactMonster(monsterIndex);
 
             // CHECK EVENT
             gamePanel.eHandler.checkEvent();
@@ -139,6 +138,13 @@ public class Player extends Entity {
                 gamePanel.gameState = gamePanel.dialogueState;
                 gamePanel.npc[i].speak();
             }
+        }
+    }
+
+    public void contactMonster(int i) {
+
+        if(i != 999) {
+           life -= 1;
         }
     }
 
