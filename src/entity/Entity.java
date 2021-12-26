@@ -29,6 +29,7 @@ public class Entity {
     public BufferedImage image, image2, image3;
     public String name;
     public boolean collision = false;
+    public int type;
 
     // CHARACTER STATUS
     public int maxLife;
@@ -63,7 +64,15 @@ public class Entity {
         gamePanel.cChecker.checkObject(this, false);
         gamePanel.cChecker.checkEntity(this, gamePanel.npc);
         gamePanel.cChecker.checkEntity(this, gamePanel.monster);
-        gamePanel.cChecker.checkPlayer(this);
+        boolean contactPlayer = gamePanel.cChecker.checkPlayer(this);
+
+        if(this.type == 2 && contactPlayer == true) {
+            if(gamePanel.player.invincible == false) {
+                // we can give damage
+                gamePanel.player.life -= 1;
+                gamePanel.player.invincible = true;
+            }
+        }
 
         // if collision is false, player can move
         if(collisionOn == false) {
