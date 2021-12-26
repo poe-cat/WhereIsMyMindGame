@@ -123,6 +123,14 @@ public class Player extends Entity {
                 standCounter = 0;
             }
         }
+
+        if(invincible == true) {
+            invincibleCounter++;
+            if(invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
 
     public void pickUpObject(int i) {
@@ -144,7 +152,10 @@ public class Player extends Entity {
     public void contactMonster(int i) {
 
         if(i != 999) {
-           life -= 1;
+            if(invincible == false) {
+                life -= 1;
+                invincible = true;
+            }
         }
     }
 
@@ -212,5 +223,9 @@ public class Player extends Entity {
 //        g2.setColor(Color.red);
 //        g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
 
+        // DEBUG
+        g2.setFont(new Font("Arial", Font.PLAIN, 26));
+        g2.setColor(Color.white);
+        g2.drawString("Invincible:" + invincibleCounter, 10, 400);
     }
 }
